@@ -59,7 +59,7 @@ public class ShoppingCart {
         System.out.println(customerName + " - " + currentDate);
 
         if(itemCount == 0){
-            System.out.print("SHOPPING CART IS EMPTY");
+            System.out.println("SHOPPING CART IS EMPTY");
         }
         else{
             int totalItem = 0;

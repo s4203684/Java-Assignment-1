@@ -1,18 +1,19 @@
 import java.util.Scanner;
 
 public class ShoppingCartManager {
+    static Scanner scan = new Scanner(System.in);
     public static void stage1(ItemToPurchase item){
-        Scanner scan = new Scanner(System.in);
 
-        
         System.out.println("Enter name of the item: ");
         String itemName =scan.nextLine();
 
         System.out.println("Enter price of " + itemName + ": ");
         int itemPrice =scan.nextInt();
+        scan.nextLine();
 
         System.out.println("Enter quantity: ");
         int itemQuantity =scan.nextInt();
+        scan.nextLine();
 
         item.setName(itemName);
         item.setPrice(itemPrice);
@@ -22,7 +23,35 @@ public class ShoppingCartManager {
 
     }
     public static void stage2(ShoppingCart cart){
+        
+        System.out.println("Enter Your Name: ");
+        String customerName =scan.nextLine();
+        cart.setCustomerName(customerName);
 
+        System.out.println("Enter Current Date: ");
+        String currentDate =scan.nextLine();
+        cart.setCurrentDate(currentDate);
+
+        cart.printTotal();
+
+        String choice = "Y";
+        while (choice.equals("Y")) {
+            System.out.println("Enter name of the item: ");
+            String itemName =scan.nextLine();
+
+            System.out.println("Enter price of " + itemName + ": ");
+            int itemPrice =scan.nextInt();
+
+            System.out.println("Enter quantity: ");
+            int itemQuantity =scan.nextInt();
+            scan.nextLine();
+
+            ItemToPurchase item = new ItemToPurchase(itemName, itemPrice, itemQuantity);
+            cart.addItem(item);
+            System.out.println("Add more?Y/N");
+            choice = scan.nextLine();  
+        }
+        cart.printTotal();
     }
 
     public static void stage3(ShoppingCart cart){
