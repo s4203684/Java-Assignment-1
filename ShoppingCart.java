@@ -34,7 +34,7 @@ public class ShoppingCart {
         return currentDate;
     }
     
-    public void setCurrentDate(String date){
+    public void setDate(String date){
         this.currentDate = date;  
     }
 

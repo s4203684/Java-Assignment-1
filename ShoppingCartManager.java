@@ -23,14 +23,14 @@ public class ShoppingCartManager {
 
     }
     public static void stage2(ShoppingCart cart){
-        
+
         System.out.println("Enter Your Name: ");
         String customerName =scan.nextLine();
         cart.setCustomerName(customerName);
 
         System.out.println("Enter Current Date: ");
         String currentDate =scan.nextLine();
-        cart.setCurrentDate(currentDate);
+        cart.setDate(currentDate);
 
         cart.printTotal();
 
