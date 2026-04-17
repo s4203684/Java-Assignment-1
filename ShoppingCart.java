@@ -80,6 +80,7 @@ public class ShoppingCart {
         for(int i = 0; i < itemCount; i++){
             if (cartItems[i].getName().equals(itemName)){
                 System.out.println("Please enter the new quantity:");
+                Scanner scan = new Scanner(System.in);
                 int newQuantity = scan.nextInt();
                 cartItems[i].setQuantity(newQuantity);
                 return;
