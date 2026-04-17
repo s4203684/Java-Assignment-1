@@ -30,7 +30,7 @@ public class ShoppingCart {
         this.customerName = name;
     }
 
-     public String getCurrentDate(){
+     public String getDate(){
         return currentDate;
     }
     
@@ -40,13 +40,13 @@ public class ShoppingCart {
 
     public boolean addItem(ItemToPurchase item){
         if(itemCount == CAPACITY){
-            System.out.print("SHOPPING CART IS FULL");
+            System.out.println("SHOPPING CART IS FULL");
             return false;
         }
       
         for(int i = 0; i < itemCount; i++){
             if(cartItems[i].getName().equals(item.getName())){
-                System.out.println("ITEM ALREADY EXIST");
+                System.out.println("ITEM ALREADY EXISTS");
                 return false;
             }
         }
@@ -68,14 +68,11 @@ public class ShoppingCart {
                 totalItem += cartItems[i].getQuantity();
                 totalCost += cartItems[i].getTotalPrice();
             }
-            System.out.println("Number of Items: " + totalItem);
+            System.out.println("Number of items: " + totalItem);
             for(int i = 0; i<itemCount; i++){
                 System.out.println(cartItems[i]);
             }
-            
             System.out.println("Total: $" + totalCost);
-             
-
         }
     }
 
@@ -83,14 +80,23 @@ public class ShoppingCart {
         for(int i = 0; i < itemCount; i++){
             if (cartItems[i].getName().equals(itemName)){
                 System.out.println("Please enter the new quantity:");
-                Scanner scan = new Scanner(System.in);
                 int newQuantity = scan.nextInt();
                 cartItems[i].setQuantity(newQuantity);
                 return;
             }
-            
-                System.out.println("[" + itemName + "] not found in cart");
-
+        }
+        System.out.println("[" + itemName + "] not found in cart");
     }
-}
+
+    public void checkout(){
+    
+        if(itemCount == 0){
+            System.out.println("SHOPPING CART IS EMPTY");
+        }
+        else{
+            printTotal();
+            System.out.println("Thank you for shopping.");
+            this.itemCount = 0;
+        }
+    }
 }

@@ -41,6 +41,7 @@ public class ShoppingCartManager {
 
             System.out.println("Enter price of " + itemName + ": ");
             int itemPrice =scan.nextInt();
+            scan.nextLine();
 
             System.out.println("Enter quantity: ");
             int itemQuantity =scan.nextInt();
@@ -56,7 +57,7 @@ public class ShoppingCartManager {
     }
 
     public static void stage3(ShoppingCart cart){
-        String choice = "Y";
+        String choice;
         System.out.println("Do you want to modify an item from the cart? Y/N");
         choice = scan.nextLine();
 
@@ -68,10 +69,16 @@ public class ShoppingCartManager {
             System.out.println("Do you want to modify an other item from the cart? Y/N");
             choice = scan.nextLine();
         }
-        
-
         cart.printTotal();
 
+
+        
+            String checkout;
+            System.out.println("Do you want to checkout? Y/N");
+            checkout = scan.nextLine();
+            if(checkout.equals("Y")){
+                cart.checkout();
+            }
     }
 
 
