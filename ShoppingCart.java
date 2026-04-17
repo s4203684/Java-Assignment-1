@@ -46,8 +46,8 @@ public class ShoppingCart {
       
         for(int i = 0; i < itemCount; i++){
             if(cartItems[i].getName().equals(item.getName())){
-                System.out.print("ITEM ALREADY EXIST");
-                return false;
+                System.out.println("ITEM ALREADY EXIST");
+                modifyItem(item);
             }
         }
         cartItems[itemCount] = item;
@@ -77,5 +77,19 @@ public class ShoppingCart {
              
 
         }
+    }
+
+    public void modifyItem(String itemName){
+        for(int i = 0; i < itemCount; i++){
+            if (cartItems[i].getName().equals(itemName)){
+                System.out.println("Please enter the new quantity:");
+                Scanner scan = new Scanner(System.in);
+                int newQuantity = scan.nextInt();
+                cartItems[i].setQuantity(newQuantity);
+                return; // stop the loop once found
+            }
+        }
+
+
     }
 }
