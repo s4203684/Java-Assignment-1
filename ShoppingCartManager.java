@@ -1,7 +1,10 @@
 import java.util.Scanner;
 
+// Handles user interaction and program flow
 public class ShoppingCartManager {
     static Scanner scan = new Scanner(System.in);
+
+    // Stage 1: Create a single item
     public static void stage1(ItemToPurchase item){
 
         System.out.println("Enter name of the item: ");
@@ -22,6 +25,8 @@ public class ShoppingCartManager {
         System.out.println("Total: " + item);
 
     }
+
+    // Stage 2: Create and manage shopping cart
     public static void stage2(ShoppingCart cart){
 
         System.out.println("Enter name of the customer: ");
@@ -53,12 +58,14 @@ public class ShoppingCartManager {
                ItemToPurchase item = new ItemToPurchase(itemName, itemPrice, itemQuantity);
                cart.addItem(item);
             }
+            // Always ask after each attempt
             System.out.println("Add more? (Y/N)");
             choice = scan.nextLine();
         }
         cart.printTotal();
     }
 
+    // Stage 3: Modify and checkout
     public static void stage3(ShoppingCart cart){
         String choice;
         System.out.println("Do you want to modify an item from the cart? Y/N");
@@ -85,6 +92,7 @@ public class ShoppingCartManager {
     }
 
 
+    // Main method
     public static void main(String[] args) {
         ItemToPurchase item = new ItemToPurchase();
         ShoppingCart cart = new ShoppingCart();

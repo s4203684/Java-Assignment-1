@@ -1,12 +1,17 @@
+// Represents a shopping cart containing multiple items
 public class ShoppingCart {
-    // private field and arry
+   // Maximum number of items allowed in the cart
     private static final int CAPACITY = 10;
+    
+     // Customer details
     private String customerName;
     private String currentDate;
+
+    // Array to store items
     private ItemToPurchase[] cartItems;
     private int itemCount;
     
-    // constract without perameters
+     // Default constructor
     public ShoppingCart(){
         this.customerName = "Unknown";
         this.currentDate = "15 April 2026";
@@ -22,28 +27,28 @@ public class ShoppingCart {
         this.itemCount = 0;
     }
     
-    // getters
+     // Getter for customer name
     public String getCustomerName(){
         return customerName;
     }
     
-    // setters
+    // Setter for customer name
     public void setCustomerName(String name){
     
         this.customerName = name;
     }
 
-    // getters
+    // Getter for date
     public String getDate(){
         return currentDate;
     }
     
-    // setters
+    // Setter for date
     public void setDate(String date){
         this.currentDate = date;  
     }
 
-    // Getting totall number of item in cart
+    // Returns total quantity of all items in cart
     public int getNumItemsInCart() {
         int totalItems = 0;
         for (int i = 0; i < itemCount; i++) {
@@ -52,7 +57,7 @@ public class ShoppingCart {
         return totalItems;
     }
     
-    // Getteing totall price of thr items in cart
+    // Returns total cost of all items in cart
     public int getCostOfCart() {
         int totalCost = 0;
         for (int i = 0; i < itemCount; i++) {
@@ -61,13 +66,19 @@ public class ShoppingCart {
         return totalCost;
     }
     
-    // Adding items to cart
+       // Adds an item to the cart if there is space
     public boolean addItem(ItemToPurchase item){
         // Cheching if the cart has space
         if(itemCount == CAPACITY){
             System.out.println("SHOPPING CART IS FULL");
             return false;
         }
+
+        if(containsItem(item.getName())){
+            System.out.println("ITEM ALREADY EXISTS");
+            return false;
+        }
+
         // Updating the cart
         cartItems[itemCount] = item;
         itemCount++;
@@ -84,7 +95,7 @@ public class ShoppingCart {
         return false;
     }
 
-    // Printing Customer name and Date
+    // Displays cart contents and total cost
     public void printTotal(){
         System.out.println(customerName + " - " + currentDate);
  
@@ -104,6 +115,7 @@ public class ShoppingCart {
         }
     }
 
+    // Modifies quantity of an existing item
     public void modifyItem(String itemName){
         for(int i = 0; i < itemCount; i++){
             if (cartItems[i].getName().equals(itemName)){
@@ -117,6 +129,7 @@ public class ShoppingCart {
         System.out.println("[" + itemName + "] not found in cart");
     }
 
+     // Prints summary and clears the cart
     public void checkout(){
     
         if(itemCount == 0){
