@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class ShoppingCart {
     private static final int CAPACITY = 10;
     private String customerName;
@@ -80,7 +78,7 @@ public class ShoppingCart {
         else{
             int totalItem = getNumItemsInCart();
             int totalCost = getCostOfCart();
-            
+
             System.out.println("Number of items: " + totalItem);
             for(int i = 0; i<itemCount; i++){
                 System.out.println(cartItems[i]);
@@ -89,12 +87,9 @@ public class ShoppingCart {
         }
     }
 
-    public void modifyItem(String itemName){
+    public void modifyItem(String itemName, int newQuantity){
         for(int i = 0; i < itemCount; i++){
             if (cartItems[i].getName().equals(itemName)){
-                System.out.println("Please enter the new quantity:");
-                Scanner scan = new Scanner(System.in);
-                int newQuantity = scan.nextInt();
                 cartItems[i].setQuantity(newQuantity);
                 return;
             }
