@@ -38,20 +38,23 @@ public class ShoppingCartManager {
         while (choice.equals("Y")) {
             System.out.println("Enter name of the item: ");
             String itemName =scan.nextLine();
+            if (cart.containsItem(itemName)){
+                System.out.println("ITEM ALREADY EXISTS");
+            }
+            else{
+                System.out.println("Enter price of " + itemName + ": ");
+                int itemPrice =scan.nextInt();
+                scan.nextLine();
 
-            System.out.println("Enter price of " + itemName + ": ");
-            int itemPrice =scan.nextInt();
-            scan.nextLine();
+               System.out.println("Enter quantity: ");
+               int itemQuantity =scan.nextInt();
+               scan.nextLine();
 
-            System.out.println("Enter quantity: ");
-            int itemQuantity =scan.nextInt();
-            scan.nextLine();
-
-            ItemToPurchase item = new ItemToPurchase(itemName, itemPrice, itemQuantity);
-            cart.addItem(item);
+               ItemToPurchase item = new ItemToPurchase(itemName, itemPrice, itemQuantity);
+               cart.addItem(item);
+            }
             System.out.println("Add more? (Y/N)");
             choice = scan.nextLine();
-
         }
         cart.printTotal();
     }
