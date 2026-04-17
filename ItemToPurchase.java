@@ -26,49 +26,49 @@ public class ItemToPurchase {
         }
     }
 
-    // access to private fields
+    // Getter for item name
     public String getName(){
         return itemName;
     }
 
-    // setters
+    // Setter for item name (only valid if not null)
     public void setName(String name) {
     if (name != null) {
         this.itemName = name;
     }
     }
     
-    // getters
+    // Getter for item price
     public int getPrice(){
         return itemPrice;
     }
 
-    // setters
+    // Setter for item price (must be >= 0)
     public void setPrice(int price) {
     if (price >= 0) {
         this.itemPrice = price;
     }
     }
 
-    // getters
+    // Getter for item quantity
     public int getQuantity(){
         return itemQuantity;
     }
 
-    // setters
+    // Setter for item quantity (must be >= 1)
     public void setQuantity(int quantity) {
     if (quantity >= 1) {
         this.itemQuantity = quantity;
     }
     }
 
-    // calculating total price
+    // Calculates total price for this item
     public int getTotalPrice(){
         return itemPrice*itemQuantity;
   
     }
 
-    // Totall output as String
+    // Returns formatted string for item details
     public String toString(){
         return itemName + " " +itemQuantity + " @ $" + itemPrice + " = $" + getTotalPrice();
     }
