@@ -87,9 +87,12 @@ public class ShoppingCart {
         }
     }
 
-    public void modifyItem(String itemName, int newQuantity){
+    public void modifyItem(String itemName){
         for(int i = 0; i < itemCount; i++){
             if (cartItems[i].getName().equals(itemName)){
+                System.out.println("Please enter the new quantity:");
+                int newQuantity = ShoppingCartManager.scan.nextInt();
+                ShoppingCartManager.scan.nextLine();
                 cartItems[i].setQuantity(newQuantity);
                 return;
             }
@@ -105,6 +108,10 @@ public class ShoppingCart {
         else{
             printTotal();
             System.out.println("Thank you for shopping.");
+            for(int i = 0; i < itemCount; i++){
+                cartItems[i] = null;
+            }
+        
             this.itemCount = 0;
         }
     }

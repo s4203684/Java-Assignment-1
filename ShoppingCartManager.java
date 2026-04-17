@@ -64,9 +64,7 @@ public class ShoppingCartManager {
         while (choice.equals("Y")) {
             System.out.println("Enter name of the item: ");
             String itemName =scan.nextLine();
-            System.out.println("Please enter the new quantity:");
-            int newQuantity = scan.nextInt();
-            cart.modifyItem(itemName, newQuantity);
+            cart.modifyItem(itemName);
 
             System.out.println("Do you want to modify another item? Y/N");
             choice = scan.nextLine();
