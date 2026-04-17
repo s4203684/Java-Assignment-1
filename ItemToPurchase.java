@@ -31,17 +31,23 @@ public class ItemToPurchase {
         return itemName;
     }
 
-    // Setter for item name (only valid if not null)
-    public void setName(String name) {
-    if (name != null) {
-        this.itemName = name;
-    }
-    }
-    
     // Getter for item price
     public int getPrice(){
         return itemPrice;
     }
+
+    // Getter for item quantity
+    public int getQuantity(){
+        return itemQuantity;
+    }
+
+    // Setter for item name (only valid if not null)
+    public void setName(String name) {
+        if (name != null) {
+            this.itemName = name;
+        }
+    }
+
 
     // Setter for item price (must be >= 0)
     public void setPrice(int price) {
@@ -50,10 +56,7 @@ public class ItemToPurchase {
     }
     }
 
-    // Getter for item quantity
-    public int getQuantity(){
-        return itemQuantity;
-    }
+    
 
     // Setter for item quantity (must be >= 1)
     public void setQuantity(int quantity) {
