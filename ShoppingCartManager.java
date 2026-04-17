@@ -48,13 +48,29 @@ public class ShoppingCartManager {
 
             ItemToPurchase item = new ItemToPurchase(itemName, itemPrice, itemQuantity);
             cart.addItem(item);
-            System.out.println("Add more?Y/N");
-            choice = scan.nextLine();  
+            System.out.println("Add more? Y/N");
+            choice = scan.nextLine();
+
         }
         cart.printTotal();
     }
 
     public static void stage3(ShoppingCart cart){
+        String choice = "Y";
+        System.out.println("Do you want to modify an item from the cart? Y/N");
+        choice = scan.nextLine();
+
+        while (choice.equals("Y")) {
+            System.out.println("Enter name of the item: ");
+            String itemName =scan.nextLine();
+            cart.modifyItem(itemName);
+
+            System.out.println("Do you want to modify an other item from the cart? Y/N");
+            choice = scan.nextLine();
+        }
+        
+
+        cart.printTotal();
 
     }
 
