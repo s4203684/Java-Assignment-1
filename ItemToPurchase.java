@@ -10,15 +10,14 @@ public class ItemToPurchase {
     }
 
     public ItemToPurchase(String name, int price, int quantity){
-        if (name != null){
+        this.itemName = "none";
+        this.itemPrice = 0;
+        this.itemQuantity = 0;
+        
+        if (name != null && price >= 0 && quantity >= 1){
             this.itemName = name;
-        }
-        if (price >= 0){
             this.itemPrice = price;
-        }
-        if (quantity >= 1) {
             this.itemQuantity = quantity;
-            
         }
     }
     public String getName(){

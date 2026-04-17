@@ -24,11 +24,11 @@ public class ShoppingCartManager {
     }
     public static void stage2(ShoppingCart cart){
 
-        System.out.println("Enter Your Name: ");
+        System.out.println("Enter name of the customer: ");
         String customerName =scan.nextLine();
         cart.setCustomerName(customerName);
 
-        System.out.println("Enter Current Date: ");
+        System.out.println("Enter the current date: ");
         String currentDate =scan.nextLine();
         cart.setDate(currentDate);
 
@@ -49,7 +49,7 @@ public class ShoppingCartManager {
 
             ItemToPurchase item = new ItemToPurchase(itemName, itemPrice, itemQuantity);
             cart.addItem(item);
-            System.out.println("Add more? Y/N");
+            System.out.println("Add more? (Y/N)");
             choice = scan.nextLine();
 
         }

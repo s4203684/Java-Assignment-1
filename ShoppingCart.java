@@ -38,6 +38,22 @@ public class ShoppingCart {
         this.currentDate = date;  
     }
 
+    public int getNumItemsInCart() {
+        int totalItems = 0;
+        for (int i = 0; i < itemCount; i++) {
+            totalItems += cartItems[i].getQuantity();
+        }
+        return totalItems;
+    }
+    
+    public int getCostOfCart() {
+        int totalCost = 0;
+        for (int i = 0; i < itemCount; i++) {
+            totalCost += cartItems[i].getTotalPrice();
+        }
+        return totalCost;
+    }
+    
     public boolean addItem(ItemToPurchase item){
         if(itemCount == CAPACITY){
             System.out.println("SHOPPING CART IS FULL");
@@ -62,12 +78,9 @@ public class ShoppingCart {
             System.out.println("SHOPPING CART IS EMPTY");
         }
         else{
-            int totalItem = 0;
-            int totalCost = 0;
-            for(int i =0; i <itemCount; i++){
-                totalItem += cartItems[i].getQuantity();
-                totalCost += cartItems[i].getTotalPrice();
-            }
+            int totalItem = getNumItemsInCart();
+            int totalCost = getCostOfCart();
+            
             System.out.println("Number of items: " + totalItem);
             for(int i = 0; i<itemCount; i++){
                 System.out.println(cartItems[i]);
