@@ -1,4 +1,5 @@
 // Represents a shopping cart containing multiple items
+import java.util.Scanner;
 public class ShoppingCart {
    // Maximum number of items allowed in the cart
     private static final int CAPACITY = 10;
@@ -11,7 +12,9 @@ public class ShoppingCart {
     private ItemToPurchase[] cartItems;
     private int itemCount;
     
-     // Default constructor
+    private Scanner scan = new Scanner (System.in);
+
+    // Default constructor
     public ShoppingCart(){
         this.customerName = "Unknown";
         this.currentDate = "15 April 2026";
@@ -19,7 +22,7 @@ public class ShoppingCart {
         this.itemCount = 0;
     }
 
-    // constract with perameters
+    // Constructor with parameters
      public ShoppingCart(String name, String date){
         this.customerName = name;
         this.currentDate = date;
@@ -66,7 +69,7 @@ public class ShoppingCart {
         return totalCost;
     }
     
-       // Adds an item to the cart if there is space
+    // Adds an item to the cart if there is space
     public boolean addItem(ItemToPurchase item){
         // Cheching if the cart has space
         if(itemCount == CAPACITY){
@@ -75,7 +78,7 @@ public class ShoppingCart {
         }
 
         if(containsItem(item.getName())){
-            System.out.println("ITEM ALREADY EXISTS");
+            System.out.println("ITEM ALREADY EXIST.");
             return false;
         }
 
@@ -117,19 +120,25 @@ public class ShoppingCart {
 
     // Modifies quantity of an existing item
     public void modifyItem(String itemName){
+        boolean found = false;
         for(int i = 0; i < itemCount; i++){
             if (cartItems[i].getName().equals(itemName)){
+                found = true;
                 System.out.println("Please enter the new quantity:");
-                int newQuantity = ShoppingCartManager.scan.nextInt();
-                ShoppingCartManager.scan.nextLine();
+                int newQuantity = scan.nextInt();
+                scan.nextLine();
                 cartItems[i].setQuantity(newQuantity);
-                return;
+                break;
             }
         }
-        System.out.println("[" + itemName + "] not found in cart");
+        
+        if (!found){
+            System.out.println("[" + itemName + "] not found in cart.");
+        }
+       
     }
-
-     // Prints summary and clears the cart
+    
+    // Prints summary and clears the cart
     public void checkout(){
     
         if(itemCount == 0){

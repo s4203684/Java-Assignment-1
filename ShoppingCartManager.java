@@ -44,7 +44,7 @@ public class ShoppingCartManager {
             System.out.println("Enter name of the item: ");
             String itemName =scan.nextLine();
             if (cart.containsItem(itemName)){
-                System.out.println("ITEM ALREADY EXISTS");
+                System.out.println("ITEM ALREADY EXIST.");
             }
             else{
                 System.out.println("Enter price of " + itemName + ": ");
