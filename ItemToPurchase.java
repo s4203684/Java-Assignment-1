@@ -1,9 +1,9 @@
 // Represents a single item that can be purchased
 public class ItemToPurchase {
     // Private fields for item details
-    private int itemPrice;
+    private double itemPrice;
     private String itemName;
-    private int itemQuantity;
+    private double itemQuantity;
     
     // Default constructor (initializes to safe default values)
     public ItemToPurchase(){
@@ -13,13 +13,13 @@ public class ItemToPurchase {
     }
      
     // Parameterized constructor (only assigns values if all inputs are valid)
-    public ItemToPurchase(String name, int price, int quantity){
+    public ItemToPurchase(String name, double price, double quantity){
         this.itemName = "none";
         this.itemPrice = 0;
         this.itemQuantity = 0;
          
         // check for valid inputs
-        if (name != null && price >= 0 && quantity >= 1){
+        if (name != null && price >= 0 && quantity > 0){
             this.itemName = name;
             this.itemPrice = price;
             this.itemQuantity = quantity;
@@ -32,12 +32,12 @@ public class ItemToPurchase {
     }
 
     // Getter for item price
-    public int getPrice(){
+    public double getPrice(){
         return itemPrice;
     }
 
     // Getter for item quantity
-    public int getQuantity(){
+    public double getQuantity(){
         return itemQuantity;
     }
 
@@ -50,7 +50,7 @@ public class ItemToPurchase {
 
 
     // Setter for item price (must be >= 0)
-    public void setPrice(int price) {
+    public void setPrice(double price) {
     if (price >= 0) {
         this.itemPrice = price;
     }
@@ -59,14 +59,14 @@ public class ItemToPurchase {
     
 
     // Setter for item quantity (must be >= 1)
-    public void setQuantity(int quantity) {
-    if (quantity >= 1) {
+    public void setQuantity(double quantity) {
+    if (quantity > 0) {
         this.itemQuantity = quantity;
     }
     }
 
     // Calculates total price for this item
-    public int getTotalPrice(){
+    public double getTotalPrice(){
         return itemPrice*itemQuantity;
   
     }
