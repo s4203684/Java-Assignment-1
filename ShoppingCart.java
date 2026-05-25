@@ -5,14 +5,14 @@ public class ShoppingCart {
     private static final int CAPACITY = 10;
     
      // Customer details
-    private String customerName;
-    private String currentDate;
+    protected String customerName;
+    protected String currentDate;
 
     // Array to store items
-    private ItemToPurchase[] cartItems;
-    private int itemCount;
+    protected ItemToPurchase[] cartItems;
+    protected int itemCount;
     
-    private Scanner scan = new Scanner (System.in);
+    protected Scanner scan = new Scanner (System.in);
 
     // Default constructor
     public ShoppingCart(){
@@ -53,16 +53,12 @@ public class ShoppingCart {
 
     // Returns total quantity of all items in cart
     public int getNumItemsInCart() {
-        int totalItems = 0;
-        for (int i = 0; i < itemCount; i++) {
-            totalItems += cartItems[i].getQuantity();
-        }
-        return totalItems;
+        return itemCount;
     }
     
     // Returns total cost of all items in cart
-    public int getCostOfCart() {
-        int totalCost = 0;
+    public double getCostOfCart() {
+        double totalCost = 0;
         for (int i = 0; i < itemCount; i++) {
             totalCost += cartItems[i].getTotalPrice();
         }
@@ -91,7 +87,7 @@ public class ShoppingCart {
     // Checking if the item already exist
     public boolean containsItem(String itemName){
         for (int i = 0; i < itemCount; i++){
-            if(cartItems[i].getName().equals(itemName)){
+            if(cartItems[i].getName().equalsIgnoreCase(itemName)){
                 return true;
             }
         }
@@ -108,7 +104,7 @@ public class ShoppingCart {
         // getting information of cart
         else{
             int totalItem = getNumItemsInCart();
-            int totalCost = getCostOfCart();
+            double totalCost = getCostOfCart();
 
             System.out.println("Number of items: " + totalItem);
             for(int i = 0; i<itemCount; i++){
@@ -125,7 +121,7 @@ public class ShoppingCart {
             if (cartItems[i].getName().equals(itemName)){
                 found = true;
                 System.out.println("Please enter the new quantity:");
-                int newQuantity = scan.nextInt();
+                double newQuantity = scan.nextDouble();
                 scan.nextLine();
                 cartItems[i].setQuantity(newQuantity);
                 break;

@@ -61,8 +61,45 @@ public class JPAssignment2{
 
     }
 
-    public static void stage2(Scanner sc){
-    }
+    public static void stage2(Scanner sc) {
+      System.out.println("Enter name of the customer:");
+      String customerName = sc.nextLine();
+
+      System.out.println("Enter the current date:");
+      String currentDate = sc.nextLine();
+
+      System.out.println("Enter the available points:");
+      int availablePoints = sc.nextInt();
+      sc.nextLine();
+
+
+      VIPShoppingCart cart = new VIPShoppingCart(customerName, currentDate, availablePoints);
+
+      String choice = "Y";
+      while(choice.equals("Y")){
+        System.out.println("Enter name of the item:");
+        String itemName = sc.nextLine();
+
+        if (cart.containsItem(itemName)) {
+            System.out.println("ITEM ALREADY EXIST.");
+        }
+        else{
+            System.out.println("Enter price of " + itemName + ":");
+            double price = sc.nextDouble();
+
+            System.out.println("Enter quantity:");
+            double quantity = sc.nextDouble();
+
+            sc.nextLine();
+            ItemToPurchase item = new ItemToPurchase(itemName, price, quantity);
+            cart.addItem(item);
+        }
+
+        System.out.println("Add more? (Y/N)");
+        choice = sc.nextLine();
+      }
+      cart.checkout();
+   }
 
     public static void stage3(){
     }
