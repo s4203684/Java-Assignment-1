@@ -35,6 +35,7 @@ public class VIPShoppingCart extends ShoppingCart{
         for(int i= 0; i < itemCount; i++){
             System.out.println(cartItems[i]);
         }
+        System.out.println("Total: $" + getCostOfCart());
 
     }
     @Override
@@ -43,8 +44,11 @@ public class VIPShoppingCart extends ShoppingCart{
             System.out.println("SHOPPING CART IS EMPTY");
             return;
         }
-        printTotal();
-
+        System.out.println(getCustomerName() + " - " + getDate());
+        System.out.println("Number of items: " + getNumItemsInCart());
+        for (int i = 0; i < itemCount; i++) {
+            System.out.println(cartItems[i]);
+        }
 
         double originalCost = getCostOfCart();
         double totalAfterDiscount;
