@@ -15,17 +15,14 @@ public class ItemToPurchase {
     }
      
     // Parameterized constructor (only assigns values if all inputs are valid)
-    public ItemToPurchase(String name, double price, double quantity){
-        this.itemName = "none";
-        this.itemPrice = 0;
-        this.itemQuantity = 0;
-         
+    public ItemToPurchase(String name, double price, double quantity) throws InvalidVariableException{ 
         // check for valid inputs
-        if (name != null && price >= 0 && quantity > 0){
-            this.itemName = name;
-            this.itemPrice = price;
-            this.itemQuantity = quantity;
-        }
+        if (name == null) throw new InvalidVariableException("Name cannot be null");
+        if (price < 0) throw new InvalidVariableException("Price cannot be negative");
+        if (quantity <= 0) throw new InvalidVariableException("Quantity must be greater than zero");
+        this.itemName = name;
+        this.itemPrice = price;
+        this.itemQuantity = quantity;
         objectCount++;
     }
 
@@ -45,27 +42,24 @@ public class ItemToPurchase {
     }
 
     // Setter for item name (only valid if not null)
-    public void setName(String name) {
-        if (name != null) {
+    public void setName(String name) throws InvalidVariableException {
+        if (name == null) throw new InvalidVariableException("Name cannot be null");
             this.itemName = name;
-        }
     }
 
 
     // Setter for item price (must be >= 0)
-    public void setPrice(double price) {
-    if (price >= 0) {
+    public void setPrice(double price) throws InvalidVariableException {
+        if (price < 0) throw new InvalidVariableException("Price cannot be negative");
         this.itemPrice = price;
-    }
     }
 
     
 
     // Setter for item quantity (must be >= 1)
-    public void setQuantity(double quantity) {
-    if (quantity > 0) {
+    public void setQuantity(double quantity) throws InvalidVariableException {
+        if (quantity <= 0) throw new InvalidVariableException("Quantity must be greater than zero");
         this.itemQuantity = quantity;
-    }
     }
 
     // Calculates total price for this item
