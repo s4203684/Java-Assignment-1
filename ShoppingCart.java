@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class ShoppingCart {
    // Maximum number of items allowed in the cart
     private static final int CAPACITY = 10;
+    private static int taxRate = 5;
     
      // Customer details
     protected String customerName;
@@ -54,6 +55,21 @@ public class ShoppingCart {
     // Returns total quantity of all items in cart
     public int getNumItemsInCart() {
         return itemCount;
+    }
+
+
+
+    public static int getTaxRate(){
+        return taxRate;
+    }
+
+    public static void setTaxRate( int rate){
+        taxRate = rate;
+    }
+
+
+    public double getTax(){
+        return getCostOfCart() * taxRate / 100.0;
     }
     
     // Returns total cost of all items in cart
