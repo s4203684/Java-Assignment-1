@@ -4,12 +4,14 @@ public class ItemToPurchase {
     private double itemPrice;
     private String itemName;
     private double itemQuantity;
+    private static int objectCount = 0;
     
     // Default constructor (initializes to safe default values)
     public ItemToPurchase(){
         itemName = "none";
         itemPrice = 0;
         itemQuantity = 0;
+        objectCount++;
     }
      
     // Parameterized constructor (only assigns values if all inputs are valid)
@@ -24,6 +26,7 @@ public class ItemToPurchase {
             this.itemPrice = price;
             this.itemQuantity = quantity;
         }
+        objectCount++;
     }
 
     // Getter for item name
@@ -76,5 +79,8 @@ public class ItemToPurchase {
         return itemName + " " +itemQuantity + " @ $" + itemPrice + " = $" + getTotalPrice();
     }
 
+    public static int getObjectCount(){
+        return objectCount;
+    }
 }
 
