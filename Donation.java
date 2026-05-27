@@ -1,6 +1,6 @@
 public class Donation extends ItemToPurchase{
-    public Donation( double quantity){
-        super( "Donation", 10, quantity );
+    public Donation(double quantity) throws InvalidVariableException {
+    super("Donation", 10, quantity);
     }
 
 

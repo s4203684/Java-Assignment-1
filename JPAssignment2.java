@@ -33,8 +33,14 @@ public class JPAssignment2{
             double price = sc.nextDouble();
 
             sc.nextLine();
+            try{
+
+            
             System.out.println("Total: " + new GiftCard(price));
 
+            }catch (InvalidVariableException e){input
+
+            }
         }
 
         else if(normalized.equals("donation")){
