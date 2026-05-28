@@ -1,4 +1,4 @@
-public class SeniorShoppingCart extends ShoppingCart{
+public class SeniorShoppingCart extends ShoppingCart {
 
     private String seniorID;
 
@@ -13,22 +13,20 @@ public class SeniorShoppingCart extends ShoppingCart{
         }
     }
 
-
-    public String getSeniorID(){
+    public String getSeniorID() {
         return seniorID;
     }
 
     public void setSeniorID(String id) throws InvalidVariableException {
         if (id == null || id.length() != 6) {
-             throw new InvalidVariableException("seniorID must be exactly 6 characters");
+            throw new InvalidVariableException("seniorID must be exactly 6 characters");
         }
         this.seniorID = id;
     }
-
 
     @Override
     public double getTax() {
         return getCostOfCart() * getTaxRate() / 200.0;
     }
-    
+
 }
