@@ -148,6 +148,7 @@ public class JPAssignment2 {
             }
 
             System.out.println("Total tax on all shopping carts: $" + String.format("%.2f", totalTax));
+            System.out.println("Total items created: " + ItemToPurchase.getObjectCount());
         } catch (InvalidVariableException e) {
             System.out.print(e.getMessage());
         }
