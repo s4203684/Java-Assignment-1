@@ -82,19 +82,15 @@ public class ShoppingCart {
     }
     
     // Adds an item to the cart if there is space
-    public boolean addItem(ItemToPurchase item){
-        // Cheching if the cart has space
-        if(itemCount == CAPACITY){
-            System.out.println("SHOPPING CART IS FULL");
-            return false;
+    public boolean addItem(ItemToPurchase item) throws InvalidVariableException {
+        if (itemCount == CAPACITY) {
+            throw new InvalidVariableException("SHOPPING CART IS FULL");
         }
 
-        if(containsItem(item.getName())){
-            System.out.println("ITEM ALREADY EXIST.");
-            return false;
+        if (containsItem(item.getName())) {
+            throw new InvalidVariableException("ITEM ALREADY EXIST.");
         }
 
-        // Updating the cart
         cartItems[itemCount] = item;
         itemCount++;
         return true;
@@ -139,7 +135,11 @@ public class ShoppingCart {
                 System.out.println("Please enter the new quantity:");
                 double newQuantity = scan.nextDouble();
                 scan.nextLine();
-                cartItems[i].setQuantity(newQuantity);
+                try{
+                    cartItems[i].setQuantity(newQuantity);
+                } catch(InvalidVariableException e){
+                   System.out.println(e.getMessage());
+                }
                 break;
             }
         }
