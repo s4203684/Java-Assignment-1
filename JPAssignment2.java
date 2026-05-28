@@ -24,6 +24,7 @@ public class JPAssignment2 {
         String itemName;
         itemName = sc.nextLine();
 
+        // Normalize string for easier comparison (removes spaces/case sensitivity)
         String normalized;
         normalized = itemName.toLowerCase().replace(" ", "");
 
@@ -51,6 +52,7 @@ public class JPAssignment2 {
         }
 
         else {
+            // Standard item processing
             System.out.println("Enter price of " + itemName + ":");
             double price = readValidDouble(sc);
 
@@ -74,7 +76,7 @@ public class JPAssignment2 {
 
         System.out.println("Enter the available points:");
         int availablePoints = sc.nextInt();
-        sc.nextLine();
+        sc.nextLine(); // Clear the buffer
 
         VIPShoppingCart cart = new VIPShoppingCart(customerName, currentDate, availablePoints);
 
@@ -83,6 +85,7 @@ public class JPAssignment2 {
             System.out.println("Enter name of the item:");
             String itemName = sc.nextLine();
 
+            // Check for duplicates before adding
             if (cart.containsItem(itemName)) {
                 System.out.println("ITEM ALREADY EXIST.");
             } else {
@@ -108,6 +111,7 @@ public class JPAssignment2 {
 
     public static void stage3() {
         try {
+            // Create various cart types (Standard, VIP, Senior)
             ShoppingCart cart1 = new ShoppingCart("Aminur", "1 Jun 2026");
             cart1.addItem(new ItemToPurchase("apple", 5, 3));
             cart1.addItem(new ItemToPurchase("bread", 4.5, 2));
@@ -132,9 +136,11 @@ public class JPAssignment2 {
             cart4.addItem(new ItemToPurchase("oats", 8, 1));
             cart4.addItem(new Donation(1));
 
+            // Polymorphic Array: Different cart types stored as the base class ShoppingCart
             ShoppingCart[] allCarts = { cart1, cart2, cart3, cart4 };
             double totalTax = 0;
             for (int i = 0; i < allCarts.length; i++) {
+                // Dynamically calls the correct getTax() based on the specific object type
                 allCarts[i].printTotal();
                 System.out.println("Tax: $" + String.format("%.2f", allCarts[i].getTax()));
                 totalTax = totalTax + allCarts[i].getTax();
@@ -147,7 +153,6 @@ public class JPAssignment2 {
         }
     }
 
-    
     public static void stage4(Scanner sc) {
         stage1(sc);
         stage2(sc);
@@ -155,11 +160,12 @@ public class JPAssignment2 {
 
     }
 
+    // Utility: Ensures user inputs a valid positive number. Prevents crashes on text input.
     public static double readValidDouble(Scanner sc) {
         while (true) {
             try {
                 double value = sc.nextDouble();
-                sc.nextLine();
+                sc.nextLine(); // Clear buffer
                 if (value > 0)
                     return value;
                 System.out.println("Not a valid number, try again:");
@@ -171,6 +177,7 @@ public class JPAssignment2 {
         }
     }
 
+    // Utility: Restricts user input to exactly 'Y' or 'N'.
     public static String readValidYN(Scanner sc) {
         while (true) {
             String input = sc.nextLine();
